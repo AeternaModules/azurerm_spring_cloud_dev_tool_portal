@@ -24,6 +24,6 @@ output "spring_cloud_dev_tool_portals_spring_cloud_service_id" {
 }
 output "spring_cloud_dev_tool_portals_sso" {
   description = "Map of sso values across all spring_cloud_dev_tool_portals, keyed the same as var.spring_cloud_dev_tool_portals"
-  value       = { for k, v in azurerm_spring_cloud_dev_tool_portal.spring_cloud_dev_tool_portals : k => v.sso if v.sso != null && length(v.sso) > 0 }
+  value       = { for k, v in azurerm_spring_cloud_dev_tool_portal.spring_cloud_dev_tool_portals : k => one(v.sso) if v.sso != null && length(v.sso) > 0 }
 }
 
